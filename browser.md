@@ -7,6 +7,41 @@
 | IE | Unknown | Unknown | Unknown |
 | Safari | Unknown | Unknown | Unknown |
 
+### Chrome Windows
+Let your emacs knew, the _**path**_ mine looks like this.
+
+Add to your `init` file
+
+```elisp
+(when (string-equal system-type "windows-nt")
+  (let (
+	(mypaths
+	 '(
+       "C:/Python27"
+	   "C:/Ruby23-x64"
+	   "C:/Program Files/nodejs/"
+	   "C:/cygwin64/usr/local/bin"
+	   "C:/cygwin64/usr/bin"
+	   "C:/cygwin64/bin"
+	   "C:/Program Files (x86)/Mozilla Firefox/"
+	   "C:/Program Files (x86)/Google/Chrome/Application/"
+	   ) )
+	)
+    (setenv "PATH" (mapconcat 'identity mypaths ";") )
+    (setq exec-path (append mypaths (list "." exec-directory)) )
+    ) )
+```
+Use proper function:
+```elisp
+    (defun my-flymd-browser-function (url)
+      (let ((process-environment (browse-url-process-environment)))
+        (apply 'start-process
+               (concat "google-chrome " url) nil
+               "chrome.exe"
+               (list "--new-window" "--allow-file-access-from-files" url))))
+               (setq flymd-browser-open-function 'my-flymd-browser-function)
+```
+
 ### Chrome (Windows or *uix)
 
 Google chrome prevents jQuery from loading local files.
