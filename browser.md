@@ -7,7 +7,7 @@
 | IE | Unknown | Unknown | Unknown |
 | Safari | Unknown | Unknown | Unknown |
 
-### Chrome Windows
+### Chrome (Windows)
 Let your emacs knew, the _**path**_ mine looks like this.
 
 Add to your `init` file
@@ -42,7 +42,7 @@ Use proper function:
                (setq flymd-browser-open-function 'my-flymd-browser-function)
 ```
 
-### Chrome (Windows or *uix)
+### Chrome (*uix)
 
 Google chrome prevents jQuery from loading local files.
 
